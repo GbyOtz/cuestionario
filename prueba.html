@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Prueba</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    
+    <div class="form-container">
+        <h1>Formulario de Prueba</h1>
+        <form action="guardar_respuesta.php" method="post">
+            <div class="form-item">
+                <label class="labelhtml" for="respuesta1">Pregunta 1:</label><br> 
+                <label>JavaScript es un lenguaje de programación de tipo estático</label> <br>
+                <select class="selecthtml" id="respuesta1" name="respuesta1" required>
+                    <option value="Verdadero">Verdadero</option>
+                    <option value="Falso">Falso</option>
+                </select>
+            </div> 
+            <div class="form-item">
+                <label for="respuesta2">Pregunta 2:</label><br>
+                <label>JavaScript puede ejecutarse tanto en el lado del cliente como en el lado del servidor</label> 
+                <select class="selecthtml" id="respuesta2" name="respuesta2" required>
+                    <option value="Verdadero">Verdadero</option>
+                    <option value="Falso">Falso</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="respuesta3">Pregunta 3:</label><br>
+                <label> == y === en JavaScript hacen exactamente lo mismo</label> 
+                <select class="selecthtml" id="respuesta3" name="respuesta3" required>
+                    <option value="Verdadero">Verdadero</option>
+                    <option value="Falso">Falso</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="respuesta4">Pregunta 4:</label><br>
+                <label>React es una biblioteca de JavaScript para construir interfaces de usuario</label> 
+                <select class="selecthtml" id="respuesta4" name="respuesta4" required>
+                    <option value="Verdadero">Verdadero</option>
+                    <option value="Falso">Falso</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="respuesta5">Pregunta 5:</label><br>
+                <label>En React, los componentes pueden ser de clase o funcionales</label> 
+                <select class="selecthtml" id="respuesta5" name="respuesta5" required>
+                    <option value="Verdadero">Verdadero</option>
+                    <option value="Falso">Falso</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="respuesta6">Pregunta 6:</label><br>
+                <label>JSX es obligatorio para escribir componentes en React</label> 
+                <select class="selecthtml" id="respuesta6" name="respuesta6" required>
+                    <option value="Verdadero">Verdadero</option>
+                    <option value="Falso">Falso</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="respuesta7">Pregunta 7:</label><br>
+                <label>MySQL es un sistema de gestión de bases de datos relacional</label> 
+                <select class="selecthtml" id="respuesta7" name="respuesta7" required>
+                    <option value="Verdadero">Verdadero</option>
+                    <option value="Falso">Falso</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="respuesta8">Pregunta 8:</label><br>
+                <label>En MySQL, la consulta SELECT * FROM tabla; selecciona todas las columnas de la tabla</label> 
+                <select class="selecthtml" id="respuesta8" name="respuesta8" required>
+                    <option value="Verdadero">Verdadero</option>
+                    <option value="Falso">Falso</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label for="respuesta9">Pregunta 9:</label>
+                <label>MySQL no soporta transacciones</label> <br>
+                <select class="selecthtml" id="respuesta9" name="respuesta9" required>
+                    <option value="Verdadero">Verdadero</option>
+                    <option value="Falso">Falso</option>
+                </select>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
