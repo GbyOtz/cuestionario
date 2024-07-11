@@ -1,5 +1,5 @@
 document.getElementById('quiz-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting
+    event.preventDefault(); // Evitar que se envíe el formulario
 
     const formData = new FormData(this);
 
