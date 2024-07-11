@@ -1,7 +1,4 @@
 <?php
-// Mostrar todos los errores de PHP
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 // Configuración de la base de datos
 $servername = "localhost";
@@ -21,37 +18,57 @@ if ($conn->connect_error) {
 
 // Verificar si el formulario ha sido enviado
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    $respuesta1 = $_POST['respuesta1'];
-    $respuesta2 = $_POST['respuesta2'];
-    $respuesta3 = $_POST['respuesta3'];
-    $respuesta4 = $_POST['respuesta4'];
-    $respuesta5 = $_POST['respuesta5'];
-    $respuesta6 = $_POST['respuesta6'];
-    $respuesta7 = $_POST['respuesta7'];
-    $respuesta8 = $_POST['respuesta8'];
-    $respuesta9 = $_POST['respuesta9'];
-
+    // Recibir las respuestas del formulario
     $userAnswers = [];
     for ($i = 1; $i <= 9; $i++) {
         $userAnswers['respuesta'.$i] = $_POST['respuesta'.$i] ?? '';
     }
 
-    // Inserta el nombre en la base de datos
+    // Guardar respuestas del usuario en la base de datos
     $sql = "INSERT INTO respuestas (respuesta1, respuesta2, respuesta3, respuesta4, respuesta5, respuesta6, respuesta7, respuesta8, respuesta9) 
-            VALUES ('$respuesta1', '$respuesta2', '$respuesta3', '$respuesta4', '$respuesta5', '$respuesta6', '$respuesta7', '$respuesta8', '$respuesta9')";
+            VALUES ('" . $userAnswers['respuesta1'] . "', '" . $userAnswers['respuesta2'] . "', '" . $userAnswers['respuesta3'] . "', '" . $userAnswers['respuesta4'] . "', '" . $userAnswers['respuesta5'] . "', '" . $userAnswers['respuesta6'] . "', '" . $userAnswers['respuesta7'] . "', '" . $userAnswers['respuesta8'] . "', '" . $userAnswers['respuesta9'] . "')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>
-        alert('Respuestas guardadas con éxito.');
-        window.location.href = 'resultados.php';
-      </script>";
-} else {
-echo "<script>
-        alert('Error: " . $sql . "<br>" . $conn->error . "');
-        window.history.back();
-      </script>";
-}
+        echo "Respuestas guardadas con éxito.<br>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error . "<br>";
+    }
+
+    // Respuestas correctas
+    $correctAnswers = [
+        'respuesta1' => 'Falso',
+        'respuesta2' => 'Verdadero',
+        'respuesta3' => 'Falso',
+        'respuesta4' => 'Verdadero',
+        'respuesta5' => 'Verdadero',
+        'respuesta6' => 'Falso',
+        'respuesta7' => 'Verdadero',
+        'respuesta8' => 'Verdadero',
+        'respuesta9' => 'Falso'
+    ];
+
+    // Calcular puntuación
+    $score = 0;
+    foreach ($correctAnswers as $key => $value) {
+        if ($userAnswers[$key] === $value) {
+            $score += 10;
+        }
+    }
+
+    // Mostrar puntuación y respuestas correctas
+    echo "<h1>Resultados del Cuestionario</h1>";
+    foreach ($correctAnswers as $key => $value) {
+        echo "<p><strong>$key:</strong> ";
+        if ($userAnswers[$key] === $value) {
+            echo "Correcto";
+        } else {
+            echo "La respuesta correcta es: $value";
+        }
+        echo "</p>";
+    }
+    echo "<p><strong>Puntuación final:</strong> $score puntos.</p>";
+
+    echo '<div class="button-container"><a href="index.html" class="button">Regresar al Inicio</a></div>';
 }
 
 $conn->close();
